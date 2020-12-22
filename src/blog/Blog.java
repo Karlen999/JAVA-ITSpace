@@ -61,7 +61,7 @@ public class Blog implements PostCommands {
 
     }
 
-    private static void addPost(){
+    private static void addPost() {
         System.out.println("Please input  title, text, category, createdDate");
         String postDataStr = scanner.nextLine();
         String[] postData = postDataStr.split(",");
@@ -92,22 +92,14 @@ public class Blog implements PostCommands {
 
     private static void getPostsByCategory() {
         System.out.println("Please input category for search by category");
-        try {
-            String postByCategory = scanner.nextLine();
-            postStorage.printPostsByCategory(postByCategory);
-        } catch (CategoryNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+        String postByCategory = scanner.nextLine();
+        postStorage.printPostsByCategory(postByCategory);
     }
+
 
     private static void searchPostsByKeyword() {
         System.out.println("Please input keyword for search by title or text");
-        try {
-            String postByCategory = scanner.nextLine();
-            postStorage.searchPostsByKeyword(postByCategory);
-        } catch (KeywordNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
+        String postByCategory = scanner.nextLine();
+        postStorage.searchPostsByKeyword(postByCategory);
     }
 }
