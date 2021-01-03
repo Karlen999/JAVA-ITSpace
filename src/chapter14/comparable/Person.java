@@ -1,4 +1,4 @@
-package chapter14;
+package chapter14.comparable;
 
 public class Person implements Comparable<Person>{
     private int personId;

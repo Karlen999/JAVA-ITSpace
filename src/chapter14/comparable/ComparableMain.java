@@ -1,4 +1,4 @@
-package chapter14;
+package chapter14.comparable;
 
 import java.util.Set;
 import java.util.TreeSet;
