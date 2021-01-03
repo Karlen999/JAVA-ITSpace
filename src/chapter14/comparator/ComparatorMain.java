@@ -1,7 +1,6 @@
-package chapter14;
+package chapter14.comparator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ComparatorMain {
