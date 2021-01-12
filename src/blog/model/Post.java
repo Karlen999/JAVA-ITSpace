@@ -1,9 +1,10 @@
 package blog.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Post {
+public class Post implements Serializable {
 
     private String title;
     private String text;

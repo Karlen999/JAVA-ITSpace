@@ -1,9 +1,8 @@
 package blog;
 
-import blog.exception.CategoryNotFoundException;
-import blog.exception.KeywordNotFoundException;
 import blog.exception.PostNotFoundException;
 import blog.model.Post;
+import blog.storage.PostStorageImpl;
 
 import java.util.Date;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package blog;
+package blog.storage;
 
 import blog.exception.CategoryNotFoundException;
 import blog.exception.KeywordNotFoundException;
