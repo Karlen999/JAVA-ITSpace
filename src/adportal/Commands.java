@@ -1,34 +1,36 @@
 package adportal;
 
 public interface Commands {
-
-    // Login, Register commands
+    //main commands
     int EXIT = 0;
     int LOGIN = 1;
     int REGISTER = 2;
+    int MAIN_PRINT_ALL_ADS = 3;
 
-    //user Ad commands
+    //user commands
     int LOGOUT = 0;
-    int ADD_NEW_AD = 1;
-    int PRINT_MY_ALL_ADS = 2;
-    int PRINT_ALL_ADS = 3;
-    int PRINT_AD_BY_CATEGORY = 4;
+    int ADD = 1;
+    int PRINT_ALL_ADS = 2;
+    int PRINT_ALL_MY_ADS = 3;
+    int PRINT_ADS_BY_CATEGORY = 4;
     int DELETE_MY_ALL_ADS = 5;
-    int DELETE_AD_BY_TITLE = 6;
+    int DELETE_MY_AD_BY_TITLE = 6;
 
-    static void printCommands(){
-        System.out.println("Please Input " + EXIT + " For Exit AdPortal ");
-        System.out.println("Please Input " + LOGIN + " For Login AdPortal ");
-        System.out.println("Please Input " + REGISTER + " For Register AdPortal ");
+
+    static void printMainCommands() {
+        System.out.println("Please input " + EXIT + " for EXIT");
+        System.out.println("Please input " + LOGIN + " for LOGIN");
+        System.out.println("Please input " + REGISTER + " for REGISTER");
+        System.out.println("Please input " + MAIN_PRINT_ALL_ADS + " for PRINT_ALL_ADS");
     }
 
-    static void printLoginCommands(){
-        System.out.println("Please Input " + LOGOUT + " For Logout to AdPortal");
-        System.out.println("Please Input " + ADD_NEW_AD + " For Add New Advertisment to AdPortal");
-        System.out.println("Please Input " + PRINT_MY_ALL_ADS + " For Print My All Advertisments");
-        System.out.println("Please Input " + PRINT_ALL_ADS + " For Print All Advertisments");
-        System.out.println("Please Input " + PRINT_AD_BY_CATEGORY + " For Print Advertisments By Category");
-        System.out.println("Please Input " + DELETE_MY_ALL_ADS + " For Delete My All Advertisments");
-        System.out.println("Please Input " + DELETE_AD_BY_TITLE + " For Delete Advertisments By Title");
+    static void printUserCommands() {
+        System.out.println("Please input " + LOGOUT + " for LOGOUT");
+        System.out.println("Please input " + ADD + " for ADD");
+        System.out.println("Please input " + PRINT_ALL_ADS + " for PRINT_ALL_ADS");
+        System.out.println("Please input " + PRINT_ALL_MY_ADS + " for PRINT_ALL_MY_ADS");
+        System.out.println("Please input " + PRINT_ADS_BY_CATEGORY + " for PRINT_ADS_BY_CATEGORY");
+        System.out.println("Please input " + DELETE_MY_ALL_ADS + " for DELETE_MY_ALL_ADS");
+        System.out.println("Please input " + DELETE_MY_AD_BY_TITLE + " for DELETE_MY_AD_BY_TITLE");
     }
 }

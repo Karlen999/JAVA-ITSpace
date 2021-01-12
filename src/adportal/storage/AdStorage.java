@@ -1,71 +1,24 @@
 package adportal.storage;
 
-import adportal.model.AD;
+import adportal.model.Ad;
 import adportal.model.Category;
 import adportal.model.User;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class AdStorage {
+public interface AdStorage {
 
-    private Set<AD> storages = new HashSet<>();
+    void add(Ad ad);
 
-    public void add(AD value) {
-        storages.add(value);
-    }
+    void printAllAds();
 
-    public int getSize() {
-        return storages.size();
-    }
+    void printMyAds(User user);
 
-    public boolean isEmpty() {
-        return storages.isEmpty();
-    }
+    void printByCategory(Category category);
 
-    public void printMyAllAds(User user) {
-        for (AD storage : storages) {
-            if (storage.getAuthor().equals(user)) {
-                System.out.println(storage.getTitle());
-                System.out.println(storage.getText());
-                System.out.println(storage.getPrice());
-                System.out.println(storage.getDate());
-                System.out.println(storage.getAuthor().getName());
-            }
-        }
-    }
+    void deleteMyAds(User user);
 
-    public void printAllAds() {
-        for (AD storage : storages) {
-            System.out.println(storage.getTitle());
-            System.out.println(storage.getText());
-            System.out.println(storage.getPrice());
-            System.out.println(storage.getDate());
-            System.out.println(storage.getAuthor().getName());
-        }
-    }
+    void deleteAdByTitle(String title, User currentUser);
 
-    public void printAdByCategory(Category category) {
-        for (AD storage : storages) {
-            if (storage.getCategory().equals(category)) {
-                System.out.println(storage);
-            }
-        }
-    }
-
-    public void deleteMyAllAds(User author) {
-        for (AD storage : storages) {
-            if (storage.getAuthor().equals(author)) {
-                storages.remove(author);
-            }
-        }
-    }
-
-    public void deleteAdByTitle(String title) {
-        for (AD storage : storages) {
-            if (storage.getTitle().equals(title)) {
-                storages.remove(title);
-            }
-        }
-    }
 }

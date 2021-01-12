@@ -1,26 +1,27 @@
 package adportal.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AD {
+public class Ad implements Serializable {
 
     private String title;
     private String text;
-    private int price;
+    private double price;
     private Date date;
     private Category category;
-    private User author;
+    private User user;
 
-    public AD(String title, String text, int price, Date date, Category category, User author) {
+    public Ad(String title, String text, double price, Date date, Category category, User user) {
         this.title = title;
         this.text = text;
         this.price = price;
         this.date = date;
         this.category = category;
-        this.author = author;
+        this.user = user;
     }
 
-    public AD() {
+    public Ad() {
     }
 
     public String getTitle() {
@@ -39,11 +40,11 @@ public class AD {
         this.text = text;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,12 +64,12 @@ public class AD {
         this.category = category;
     }
 
-    public User getAuthor() {
-        return author;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -76,36 +77,39 @@ public class AD {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AD ad = (AD) o;
+        Ad ad = (Ad) o;
 
-        if (price != ad.price) return false;
+        if (Double.compare(ad.price, price) != 0) return false;
         if (title != null ? !title.equals(ad.title) : ad.title != null) return false;
         if (text != null ? !text.equals(ad.text) : ad.text != null) return false;
         if (date != null ? !date.equals(ad.date) : ad.date != null) return false;
         if (category != ad.category) return false;
-        return author != null ? author.equals(ad.author) : ad.author == null;
+        return user != null ? user.equals(ad.user) : ad.user == null;
     }
 
     @Override
     public int hashCode() {
-        int result = title != null ? title.hashCode() : 0;
+        int result;
+        long temp;
+        result = title != null ? title.hashCode() : 0;
         result = 31 * result + (text != null ? text.hashCode() : 0);
-        result = 31 * result + price;
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "AD{" +
+        return "Ad{" +
                 "title='" + title + '\'' +
                 ", text='" + text + '\'' +
                 ", price=" + price +
                 ", date=" + date +
                 ", category=" + category +
-                ", author=" + author +
+                ", user=" + user +
                 '}';
     }
 }

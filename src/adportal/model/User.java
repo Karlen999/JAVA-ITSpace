@@ -1,6 +1,9 @@
 package adportal.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+
     private String name;
     private String surname;
     private Gender gender;
@@ -73,15 +76,14 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User register = (User) o;
+        User user = (User) o;
 
-        if (age != register.age) return false;
-        if (name != null ? !name.equals(register.name) : register.name != null) return false;
-        if (surname != null ? !surname.equals(register.surname) : register.surname != null) return false;
-        if (gender != null ? !gender.equals(register.gender) : register.gender != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(register.phoneNumber) : register.phoneNumber != null)
-            return false;
-        return password != null ? password.equals(register.password) : register.password == null;
+        if (age != user.age) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+        if (gender != user.gender) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
+        return password != null ? password.equals(user.password) : user.password == null;
     }
 
     @Override
@@ -97,13 +99,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "Register{" +
+        return "User{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", gender=" + gender +
                 ", age=" + age +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }
