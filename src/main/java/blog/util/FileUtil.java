@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FileUtil {
 
-    private static final String BLOG_LIST_PATH = "G:\\JAVA ITSpace\\src\\blog\\file\\blogList.txt";
+    private static final String BLOG_LIST_PATH = "src/main/resources/blogList.txt";
 
     public static void serializePostList(List<Post> posts){
         createFileIfNotExists(BLOG_LIST_PATH);

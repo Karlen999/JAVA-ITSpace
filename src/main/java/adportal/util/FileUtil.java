@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class FileUtil {
 
-    private static final String USER_MAP_PATH = "G:\\JAVA ITSpace\\src\\adportal\\file\\userMap.txt";
-    private static final String AD_LIST_PATH = "G:\\JAVA ITSpace\\src\\adportal\\file\\adList.txt";
+    private static final String USER_MAP_PATH = "src/main/resources/userMap.txt";
+    private static final String AD_LIST_PATH = "src/main/resources/adList.txt";
 
 
     public static void serializeUserMap(Map<String, User> userMap) {

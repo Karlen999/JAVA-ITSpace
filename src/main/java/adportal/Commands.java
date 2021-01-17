@@ -6,6 +6,7 @@ public interface Commands {
     int LOGIN = 1;
     int REGISTER = 2;
     int MAIN_PRINT_ALL_ADS = 3;
+    int IMPORT_USERS = 4;
 
     //user commands
     int LOGOUT = 0;
@@ -22,6 +23,8 @@ public interface Commands {
         System.out.println("Please input " + LOGIN + " for LOGIN");
         System.out.println("Please input " + REGISTER + " for REGISTER");
         System.out.println("Please input " + MAIN_PRINT_ALL_ADS + " for PRINT_ALL_ADS");
+        System.out.println("Please input " + IMPORT_USERS + " for IMPORT_USERS");
+
     }
 
     static void printUserCommands() {
