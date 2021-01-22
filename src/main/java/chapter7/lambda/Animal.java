@@ -11,9 +11,15 @@ public class Animal {
         canSwim = swimmer;
     }
 
-    public boolean isCanHop() { return canHop; }
+    public boolean canHop(){
+        return canHop;
+    }
 
-    public boolean isCanSwim() { return canSwim; }
+    public boolean canSwim(){
+        return canSwim;
+    }
 
-    public String toString() { return species; }
+    public String toString(){
+        return species;
+    }
 }

@@ -9,7 +9,7 @@ public class PredicateSearch {
         List<Animal> animals = new ArrayList<Animal>();
         animals.add(new Animal("fish",false,true));
 
-        print(animals, a -> a.isCanHop());
+        print(animals, a -> a.canSwim());
 
     }
     private static void print(List<Animal> animals, Predicate<Animal> checker){
