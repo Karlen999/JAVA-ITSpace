@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.function.Supplier;
 import java.time.LocalDate;
 
+// implementing Supplier Functional Interface
+
 public class Supp {
     public static void main(String[] args) {
         Supplier<LocalDate> s1 = LocalDate::now;
