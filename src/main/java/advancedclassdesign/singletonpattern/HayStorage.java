@@ -1,4 +1,4 @@
-package singletonpatern;
+package advancedclassdesign.singletonpattern;
 
 public class HayStorage {
     private int quantity = 0;

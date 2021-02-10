@@ -12,6 +12,7 @@ public class UserStorageFileImpl implements UserStorage {
     private Map<String, User> userMap;
 
     public UserStorageFileImpl(){
+
         userMap = FileUtil.deserializeUserMap();
     }
 

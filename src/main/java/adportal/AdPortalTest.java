@@ -13,6 +13,7 @@ import adportal.storage.impl.UserStorageFileImpl;
 import adportal.storage.impl.UserStorageImpl;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -77,10 +78,13 @@ public class AdPortalTest implements Commands {
         String xlsxPath = scanner.nextLine();
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(xlsxPath);
+            DataFormatter formatter = new DataFormatter();
             XSSFSheet sheet = workbook.getSheetAt(0);
             int lastRowNum = sheet.getLastRowNum();
+
             for (int i = 1; i <= lastRowNum; i++) {
                 XSSFRow row = sheet.getRow(i);
+
                 String name = row.getCell(0).getStringCellValue();
                 String surname = row.getCell(1).getStringCellValue();
                 Gender gender = Gender.valueOf(row.getCell(2).getStringCellValue());

@@ -1,4 +1,4 @@
-package singletonpatern;
+package advancedclassdesign.singletonpattern;
 
 public class LlamaTrainer {
     public boolean feedLlamas(int numberOfLlamas) {
