@@ -1,7 +1,6 @@
 package todo.manager;
 
-import todo.db.DBConnectionProvider;
-import todo.model.User;
+import java.sql.*;
 
 import java.sql.*;
 import java.util.ArrayList;

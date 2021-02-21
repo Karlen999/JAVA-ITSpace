@@ -18,6 +18,5 @@ public class Task {
     private String description;
     private Date deadline;
     private Status status;
-    private int userId;
     private User user;
 }

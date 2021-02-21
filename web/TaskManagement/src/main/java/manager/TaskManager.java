@@ -28,7 +28,7 @@ public class TaskManager {
                 statement.setString(3, null);
             }
             statement.setString(4, task.getStatus().name());
-            statement.setInt(5, task.getUserId());
+            statement.setInt(5, task.getUser().getId());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -49,10 +49,12 @@ public class TaskManager {
             while (resultSet.next()) {
                 tasks.add(getTaskFromResultSet(resultSet));
             }
+            return tasks;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return tasks;
+        return null;
     }
 
     public List<Task> getAllTaskByUser(int userId){
@@ -87,43 +89,39 @@ public class TaskManager {
         return tasks;
     }
 
-    public boolean updateStatus(int id, Status status){
+    public void updateStatus(int taskId, String status){
         try {
             PreparedStatement statement = connection.prepareStatement("UPDATE task SET status = ? WHERE id = ?");
-            statement.setInt(1, id);
-            statement.setString(2,status.name());
+            statement.setString(1, status);
+            statement.setInt(2, taskId);
             statement.executeUpdate();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
-    public boolean delete(int id){
+    public void delete(int id){
         try {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM task WHERE id = ?");
             statement.setInt(1, id);
             statement.executeUpdate();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     private Task getTaskFromResultSet(ResultSet resultSet) {
         try {
             try {
-                return Task.builder()
+                Task task = Task.builder()
                         .id(resultSet.getInt(1))
                         .name(resultSet.getString(2))
                         .description(resultSet.getString(3))
                         .deadline(resultSet.getString(4) == null ? null : sdf.parse(resultSet.getString(4)))
                         .status(Status.valueOf(resultSet.getString(5)))
-                        .userId(resultSet.getInt(6))
-                        .user(userManager.getById(resultSet.getInt(7)))
+                        .user(userManager.getById(resultSet.getInt(6)))
                         .build();
+                return task;
             } catch (ParseException e) {
                 e.printStackTrace();
                 return null;

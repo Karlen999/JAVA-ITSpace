@@ -1,8 +1,10 @@
 package servlet;
 
 import manager.TaskManager;
+import manager.UserManager;
 import model.Status;
 import model.Task;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import java.text.SimpleDateFormat;
 public class AddTaskServlet extends HttpServlet {
 
     private TaskManager taskManager = new TaskManager();
+    private UserManager userManager = new UserManager();
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
@@ -25,7 +28,7 @@ public class AddTaskServlet extends HttpServlet {
         String description = req.getParameter("description");
         String date = req.getParameter("date");
         String status = req.getParameter("status");
-        int userId = Integer.parseInt(req.getParameter("user_id"));
+        User user =  userManager.getById(Integer.parseInt(req.getParameter("user_id")));
 
         try {
             taskManager.add(Task.builder()
@@ -33,7 +36,7 @@ public class AddTaskServlet extends HttpServlet {
                     .description(description)
                     .deadline(sdf.parse(date))
                     .status(Status.valueOf(status))
-                    .userId(userId)
+                    .user(user)
                     .build());
 
             resp.sendRedirect("/managerPage");

@@ -2,6 +2,7 @@ package manager;
 
 import db.DBConnectionProvider;
 import model.User;
+import model.UserType;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class UserManager {
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
     public boolean Register(User user) {
-        String sql = "INSERT INTO user (name, surname, email, password, user_type) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO user (name, surname, email, password, user_type, picture_url) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -21,6 +22,7 @@ public class UserManager {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getPassword());
             statement.setString(5, user.getUserType().name());
+            statement.setString(6, user.getPictureUrl());
 
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -58,6 +60,8 @@ public class UserManager {
                     .surname(resultSet.getString(3))
                     .email(resultSet.getString(4))
                     .password(resultSet.getString(5))
+                    .userType(UserType.valueOf(resultSet.getString(6)))
+                    .pictureUrl(resultSet.getString(7))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace();
