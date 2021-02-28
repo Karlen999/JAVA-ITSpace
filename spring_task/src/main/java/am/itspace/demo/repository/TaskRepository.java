@@ -1,0 +1,12 @@
+package am.itspace.demo.repository;
+
+import am.itspace.demo.model.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface TaskRepository extends JpaRepository<Task, Integer> {
+
+    List<Task> findAllByNameStartingWith(String name);
+
+}

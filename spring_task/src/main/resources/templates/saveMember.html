@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member</title>
+</head>
+<body>
+<form action="/member/save" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:if="${member != null}" th:value="${member.id}">
+    <input type="text" name="name" th:value="${member.name}"><br>
+    <input type="text" name="surname" th:value="${member.surname}"><br>
+    <input type="text" name="email" th:value="${member.email}"><br>
+    <input type="text" name="phone" th:value="${member.phone}"><br>
+    <input type="file" name="image" ><br>
+
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

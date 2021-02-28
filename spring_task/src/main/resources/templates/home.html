@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Search:
+<form action="/search" method="get">
+    <input type="text" name="keyword">
+    <input type="submit" value="search">
+
+</form>
+<a href="/task/save">Add New Task</a>  | <a href="/member/save">Add New Member</a>
+<table border="1">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>description</td>
+        <td>deadline</td>
+        <td>member</td>
+        <td>action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}"> </td>
+        <td th:text = "${task.name}">  </td>
+        <td th:text = "${task.description}">  </td>
+        <td th:text = "${task.deadline}"> </td>
+        <td> <img th:src="@{/member/image(photoUrl=${task.member.photoUrl})}" width="20" />
+            <span th:text="${task.member.name}"></span></td>
+        <td>
+            <a th:href="@{/task/save/(id=${task.id})}"> Edit </a> | <a th:href="@{/task/delete/(id=${task.id})}"> Delete </a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

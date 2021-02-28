@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/task/save" method="post">
+    <input type="hidden" name="id" th:if="${task != null}" th:value="${task.id}">
+    <input type="text" name="name" th:value="${task.name}"><br>
+    <textarea name="description" th:text="${task.description}"></textarea><br>
+    <input type="text" name="deadline" th:value="${task.deadline}"> <br>
+    <select name="member.id">
+        <option th:each="member : ${members}" th:value="${member.id}"
+                th:text="${member.name  + ' ' + member.surname}"></option>
+    </select>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>
