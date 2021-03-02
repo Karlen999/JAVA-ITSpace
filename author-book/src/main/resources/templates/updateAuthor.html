@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update page</title>
+</head>
+<body>
+<a href="/authors/all">All authors</a>
+Update Author
+<br>
+<form action="/author/update" method="post">
+    <input type="hidden" name="id" th:value="${author.id}"><br>
+    <input type="text" name="name" th:value="${author.name}"><br>
+    <input type="text" name="surname" th:value="${author.surname}"><br>
+    <input type="text" name="email" th:value="${author.email}"><br>
+    <select name="gender" th:value="${author.gender}">
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+    </select>
+        <br>
+    <textarea name="bio" th:value="${author.bio}"></textarea><br>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

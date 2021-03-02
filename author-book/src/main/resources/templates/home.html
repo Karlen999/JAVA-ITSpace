@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<h1>Author - book system </h1>
+
+<br>
+Add Author:
+<br>
+<form action="/author/add" method="post">
+    <input type="text" name="name" placeholder="Input name"><br>
+    <input type="text" name="surname" placeholder="Input surname"><br>
+    <input type="text" name="email" placeholder="Input email"><br>
+    <select name="gender">
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+    </select><br>
+    <textarea name="bio" id="bio" placeholder="Input bio"></textarea><br>
+    <input type="submit" value="Add author">
+</form>
+
+Add book:
+<br>
+<form action="/book/add" method="post">
+    <input type="text" name="title" placeholder="Input title"><br>
+    <textarea name="description" id="description" placeholder="Input description"></textarea><br>
+    <input type="number" name="price" placeholder="Input price"><br>
+    <select name="author.id">
+        <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name + ' ' + author.surname}"></option>
+    </select><br>
+    <input type="submit" value="Add book">
+</form>
+
+<a href="/authors/all">allAuthors</a> | <a href="/books/all">allBooks</a>
+
+</body>
+</html>
