@@ -32,4 +32,9 @@ public class HomeController {
         modelMap.addAttribute("tasks", allByName);
         return "home";
     }
+
+    @GetMapping("/about")
+    public String aboutPage(){
+        return "about";
+    }
 }

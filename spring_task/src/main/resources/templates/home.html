@@ -5,13 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-Search:
+
+<div th:insert="fragments/header.html :: header"></div>
+
+<span th:text="#{home.search}"></span> :
 <form action="/search" method="get">
     <input type="text" name="keyword">
     <input type="submit" value="search">
 
 </form>
-<a href="/task/save">Add New Task</a>  | <a href="/member/save">Add New Member</a>
+<a href="/task/save" th:text="#{home.add.new.task}"></a>  | <a href="/member/save" th:text="#{home.add.new.user}"></a>
 <table border="1">
     <thead>
     <tr>
@@ -38,5 +41,6 @@ Search:
     </tr>
     </tbody>
 </table>
+<a href="/about">About</a>
 </body>
 </html>
