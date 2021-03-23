@@ -1,0 +1,30 @@
+package am.itspace.listing_app.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "listing")
+
+public class Listing {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  int id;
+
+    private String title;
+    private String description;
+    private double price;
+    @ManyToOne
+    private Category category;
+    @ManyToOne
+    private User user;
+}
